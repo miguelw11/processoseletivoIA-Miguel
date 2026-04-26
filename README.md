@@ -1,13 +1,16 @@
-# Processo Seletivo – Intensivo Maker | AI
-👤 **Aluno:** Miguel Wagner Galvão Ferreira de Morais
+# 📝 Relatório do Candidato
 
-# Classificação de Dígitos MNIST para Edge AI 🚀
+**👤 Identificação:** Miguel Wagner Galvão Ferreira de Morais
+
+---
+
+## Classificação de Dígitos MNIST para Edge AI 🚀
 
 Este projeto consiste no desenvolvimento, treinamento e otimização de uma Rede Neural Convolucional (CNN) para a classificação de dígitos manuscritos (dataset MNIST), com foco em dispositivos de baixo recurso computacional (Edge Computing).
 
 ---
 
-## 📋 Resumo da Arquitetura
+### 1️⃣ Resumo da Arquitetura do Modelo
 
 O modelo foi projetado com uma arquitetura **CNN (Convolutional Neural Network)** enxuta para equilibrar alta precisão e baixo consumo de memória:
 
@@ -20,7 +23,7 @@ O modelo foi projetado com uma arquitetura **CNN (Convolutional Neural Network)*
 
 ---
 
-## 📚 Bibliotecas Utilizadas
+### 2️⃣ Bibliotecas Utilizadas
 
 * **TensorFlow 2.12+**: Framework principal para construção e treinamento.
 * **Keras**: API de alto nível utilizada para definir as camadas da rede.
@@ -29,7 +32,7 @@ O modelo foi projetado com uma arquitetura **CNN (Convolutional Neural Network)*
 
 ---
 
-## ⚡ Técnica de Otimização
+### 3️⃣ Técnica de Otimização do Modelo
 
 Para reduzir o peso do modelo para sistemas IoT, foi aplicada a técnica de **Dynamic Range Quantization** via TFLite Converter.
 
@@ -38,7 +41,7 @@ Para reduzir o peso do modelo para sistemas IoT, foi aplicada a técnica de **Dy
 
 ---
 
-## 📊 Resultados Obtidos
+### 4️⃣ Resultados Obtidos
 
 Os resultados superaram as expectativas de engenharia, mantendo alta precisão em um arquivo extremamente leve.
 
@@ -52,19 +55,15 @@ Os resultados superaram as expectativas de engenharia, mantendo alta precisão e
 
 ---
 
-## 🧠 Principais Aprendizados
+### 5️⃣ Comentários Adicionais
 
-1.  **Design Eficiente:** A redução de filtros (de 64 para 32/16) e neurônios na camada densa permitiu que o modelo ficasse nas normas padrão de limite de tamanho, sem comprometer a acurácia.
-2.  **Otimização de Bordas:** Aprendi que, para tarefas como o MNIST, a quantização de pesos é extremamente eficaz, pois o modelo não perde a capacidade de identificar formas fundamentais mesmo com menos precisão numérica.
-3.  **Ambientes CI/CD:** O desenvolvimento focado em scripts que executam sem intervenção manual é crucial para pipelines de integração contínua.
+**Principais Aprendizados:**
+* A importância de equilibrar a profundidade da rede com o limite de hardware: reduzir filtros e neurônios permitiu bater a meta de 600KB mantendo uma performance excelente.
+* O fluxo de conversão para TFLite é essencial para transformar modelos de pesquisa em produtos reais para Edge AI.
 
----
-
-## 🚀 Possíveis Melhorias
-
-* **Acurácia:** Implementação de *Data Augmentation* (rotação e deslocamento) para aumentar a robustez contra dígitos escritos de forma inclinada.
-* **Tamanho:** Testar a técnica de **Pruning** (poda de neurônios) para remover conexões com peso zero antes da conversão para TFLite.
-* **Velocidade:** Utilizar *Full Integer Quantization* com um dataset representativo para permitir que o modelo rode em hardwares que não possuem unidade de ponto flutuante (FPU).
-
----
+**Possíveis Melhorias:**
+* **Acurácia:** Aplicação de *Data Augmentation* para aumentar a robustez contra variações na caligrafia.
+* **Eficiência:** Uso de *Pruning* (poda de neurônios) para remover conexões redundantes e reduzir ainda mais o tamanho.
+* **Hardware:** Implementação de *Full Integer Quantization* para rodar em dispositivos que não possuem unidade de processamento de ponto flutuante (FPU).
+  
 *Relatório final desenvolvido para o desafio técnico de Visão Computacional e Edge AI para o processo seletivo do PNAAT.*
