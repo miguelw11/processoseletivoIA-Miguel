@@ -3,7 +3,7 @@ from tensorflow import keras
 from tensorflow.keras import layers, models
 
 def main():
-    print("Carregando o dataset MNIST...")
+    print("Carregando o dataset MNIST... ")
     mnist = tf.keras.datasets.mnist
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
 

@@ -6,7 +6,7 @@ def main():
     tflite_model_path = 'model.tflite'
 
     if not os.path.exists(model_path):
-        print(f" Erro: O modelo '{model_path}' não foi encontrado. Execute 'train_model.py' primeiro.")
+        print(f"Erro: O modelo '{model_path}' não foi encontrado. Execute 'train_model.py' primeiro.")
         return
 
     print(f"Carregando o modelo salvo '{model_path}'...")
