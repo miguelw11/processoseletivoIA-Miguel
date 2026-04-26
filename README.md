@@ -1,363 +1,70 @@
 # Processo Seletivo – Intensivo Maker | AI
+👤 **Aluno:** Miguel Wagner Galvão Ferreira de Morais
 
-Bem-vindo(a) à **etapa prática do processo seletivo para o Intensivo Maker**.
+# Classificação de Dígitos MNIST para Edge AI 🚀
 
-Esta atividade tem como objetivo avaliar competências técnicas relacionadas a **Machine Learning**, **Visão Computacional** e **Otimização de modelos para sistemas embarcados (Edge AI)**, a partir da aplicação prática dos conhecimentos adquiridos nos cursos EAD da etapa anterior.
-
-> 🎯 **Importante**  
-> O foco deste desafio é avaliar sua capacidade de **projetar, treinar e otimizar um modelo de IA**.  
+Este projeto consiste no desenvolvimento, treinamento e otimização de uma Rede Neural Convolucional (CNN) para a classificação de dígitos manuscritos (dataset MNIST), com foco em dispositivos de baixo recurso computacional (Edge Computing).
 
 ---
 
-## 📌 Navegação Rápida
+## 📋 Resumo da Arquitetura
 
-- 🏁 [Passo 0 – Antes de Tudo](#-passo-0-antes-de-tudo)
-- ⚙ [Passo 1 – Preparando o Ambiente](#-passo-1-preparando-o-ambiente)
-- 💻 [Passo 2 – O Desafio Técnico](#-passo-2-o-desafio-técnico)
-  - 🎯 [Conjunto de Dados](#-conjunto-de-dados)
-  - 📂 [Estrutura do Projeto](#-estrutura-do-projeto)
-  - 📚 [Material de Apoio](#-material-de-apoio)
-  - ⚖️ [Critérios de Avaliação](#️-critérios-de-avaliação)
-- 📤 [Passo 3 – Instruções de Entrega](#-passo-3-instruções-de-entrega)
-  - 📝 [Relatório do Candidato](#-relatório-do-candidato)
+O modelo foi projetado com uma arquitetura **CNN (Convolutional Neural Network)** enxuta para equilibrar alta precisão e baixo consumo de memória:
 
----
-
-## 🏁 Passo 0: Antes de Tudo
-
-Caso você **nunca tenha utilizado Git ou GitHub**, não se preocupe.  
-Siga atentamente as etapas abaixo.
-
-
-### 1️⃣ Criação de Conta no GitHub
-
-1. Acesse: https://github.com  
-2. Clique em **Sign up**  
-3. Crie sua conta gratuita seguindo as instruções da plataforma  
-
-(*O GitHub será utilizado para envio, versionamento e correção automática do seu projeto.*)
-
-
-### 2️⃣ Instalação do Git
-
-O **Git** é a ferramenta que permite versionar e enviar seu código para o GitHub.
-
-- **Windows**  
-  Baixe e instale o **Git Bash**:  
-  https://git-scm.com/downloads
-
-- **Linux / macOS**  
-  Verifique se o Git já está instalado:
-  ```bash
-  git --version
-  ```
+* **Camada de Entrada:** Imagens de 28x28 pixels em tons de cinza (1 canal).
+* **Primeiro Bloco Convolucional:** Camada `Conv2D` (16 filtros, 3x3) + `MaxPooling2D` (2x2).
+* **Segundo Bloco Convolucional:** Camada `Conv2D` (32 filtros, 3x3) + `MaxPooling2D` (2x2).
+* **Camada de Achatamento (Flatten):** Converte o mapa de características 2D em um vetor 1D.
+* **Camada Densa:** 32 neurônios com ativação **ReLU**.
+* **Camada de Saída:** 10 neurônios (classes de 0 a 9) com ativação **Softmax**.
 
 ---
 
-## ⚙ Passo 1: Preparando o Ambiente
+## 📚 Bibliotecas Utilizadas
 
-Para desenvolver o desafio, você deverá criar uma cópia deste repositório.
-
-### 1️⃣ Fork do Repositório
-
-<img width="219" height="45" alt="image" src="https://github.com/user-attachments/assets/5d629626-513a-445c-ba0f-e5bb3e225187" />
-
-1. No canto superior direito desta página, clique em **Fork**  
-2. Uma cópia deste repositório será criada no **seu perfil do GitHub**
-(*O Fork permite que você trabalhe de forma independente sem alterar o repositório original.*)
-
-
-
-### 2️⃣ Clone do Repositório
-
-<img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/abbd331b-a005-4633-89c6-afd16acbe828" />
-
-No repositório do **seu Fork**, clique em **<> Code**, copie a URL e execute:
-
-```bash
-git clone https://github.com/SEU_USUARIO/nome-do-repositorio.git
-cd nome-do-repositorio
-```
-(*O comando `git clone` cria uma cópia do repositório.*)
-
-
-
-### 3️⃣ Preparação do Ambiente de Execução
-
-Você pode executar o projeto de **Três formas**. Escolha apenas uma.
-
-
-
-#### Opção A – Ambiente Python Local 
-Requisitos:
-- Python **3.10 ou 3.11**
-- pip
-
-Instale as dependências com:
-
-```bash
-pip install -r requirements.txt
-```
-
-
-
-#### Opção B – Dev Container 
-Este repositório inclui um **Dev Container** para facilitar a criação de um ambiente Python padronizado.
-
-**Requisitos**
-- VS Code
-- Docker instalado
-- Extensão **Dev Containers**
-
-**Passos**
-1. Abra o repositório no VS Code  
-2. Selecione **“Reopen in Container”**  
-3. Aguarde a criação automática do ambiente  
-
-➡️ As dependências serão instaladas automaticamente.
-
-
-#### Opção C - via browser
-Você também pode abrir o container via github codespace
-
-1. Clique em **<> Code**
-2. Clique em **Codespaces**
-3. Clique em **Create codespace on image**
-
-<img width="482" height="436" alt="image" src="https://github.com/user-attachments/assets/37a1e99d-66d2-4730-b824-26f834bd8cc3" />
-
-
->  Será aberto uma instância do VS Code no seu navegador com o container configurado
-
+* **TensorFlow 2.12+**: Framework principal para construção e treinamento.
+* **Keras**: API de alto nível utilizada para definir as camadas da rede.
+* **NumPy**: Processamento numérico e manipulação de arrays.
+* **TensorFlow Lite**: Conversão e otimização para implantação em dispositivos Edge.
 
 ---
 
-## 💻 Passo 2: O Desafio Técnico
+## ⚡ Técnica de Otimização
 
-O desafio consiste em desenvolver um **modelo de Visão Computacional** capaz de **classificar dígitos manuscritos**, e posteriormente **otimizá-lo para execução em dispositivos Edge**, como sistemas embarcados e IoT.
+Para reduzir o peso do modelo para sistemas IoT, foi aplicada a técnica de **Dynamic Range Quantization** via TFLite Converter.
 
-O foco não é apenas obter alta acurácia, mas também **compreender o fluxo completo**:
-
-**treinamento → salvamento → conversão → otimização**
-
-
-
-### 🎯 Conjunto de Dados
-
-Será utilizado o dataset **MNIST**, composto por imagens de dígitos manuscritos de **0 a 9**.
-<img width="500" height="294" alt="image" src="https://github.com/user-attachments/assets/f323b4cc-d759-4e05-bb58-13e4d6dc7e5b" />
-
-✔️ O dataset já está disponível na biblioteca **TensorFlow/Keras**, não sendo necessário download manual.
-
-📌 *O MNIST é amplamente utilizado para introdução à Visão Computacional e Redes Neurais.*
-
-
-
-###  ✅ Requisitos Obrigatórios
-
-**Etapa 1:**  Treinamento do Modelo (`train_model.py`)
-
-Implemente no arquivo `train_model.py` um código que realize:
-
-- Carregamento do dataset MNIST via TensorFlow
-- Construção e treinamento de um modelo de classificação baseado em **Redes Neurais Convolucionais (CNN)**  
-  (utilizando camadas `Conv2D` e `MaxPooling`)
-- Treinamento do modelo
-- Exibição da **acurácia final** no terminal
-- Salvamento do modelo treinado no formato **Keras** (`.h5`)
-
-(*O modelo salvo será utilizado na etapa de otimização.*)
-
-
-
-**Etapa 2:** Otimização do Modelo (`optimize_model.py`)
-
-No arquivo `optimize_model.py`, implemente:
-
-- Carregamento do modelo treinado
-- Conversão para **TensorFlow Lite (`.tflite`)**
-- Aplicação de técnica de otimização, como:
-  - **Dynamic Range Quantization**
-
-(**Objetivo:** reduzir o tamanho do modelo, mantendo desempenho adequado para aplicações de **Edge AI**.)
-
-
-
-### 📂 Estrutura do Projeto
-
-⚠️ **Atenção:**  
-A estrutura e os nomes dos arquivos **não devem ser alterados**.
-
-```plaintext
-seu-repositorio/
-├── .github/
-│   └── workflows/
-│       └── ci.yml            # 🤖 Pipeline de correção automática (NÃO ALTERAR)
-├── .devcontainer/            # 🐳 Dev Container (opcional)
-│   └── devcontainer.json
-├── train_model.py            # ✏️ Treinamento do modelo
-├── optimize_model.py         # ✏️ Conversão e otimização
-├── requirements.txt          # 📄 Dependências do projeto
-├── model.h5                  # 🤖 Modelo treinado (gerado)
-├── model.tflite              # ⚡ Modelo otimizado (gerado)
-└── README.md                 # 📝 Relatório final do candidato
-```
-
-
-
-### ⚠️ Restrições e Considerações de Engenharia
-
-Este desafio é avaliado automaticamente por meio de um pipeline de
-**integração contínua (CI)**, executado em um ambiente controlado e com
-restrições de recursos computacionais.
-
-Você **não precisa conhecer GitHub Actions** para realizar o desafio.
-No entanto, é importante respeitar as diretrizes abaixo.
-
-**Diretrizes para o Modelo**
-
-- O modelo deve ser uma **CNN simples**, adequada para **Edge AI**
-- Evite arquiteturas muito profundas ou complexas
-- Recomenda-se utilizar **até 3 camadas convolucionais**
-- **Não utilize modelos pré-treinados**
-- Número de épocas **limitado** (ex: até 5)
-
-#### Diretrizes de Execução
-
-- Treinamento apenas em **CPU**
-- Tempo total reduzido (compatível com CI)
-- Código deve executar do início ao fim **sem intervenção manual**
-
-> **Importante:**  
-> O objetivo não é obter a maior acurácia possível, mas sim demonstrar
-> **engenharia eficiente**, compatível com ambientes automatizados e
-> restrições típicas de aplicações reais de Edge AI.
-
-
-
-### 📚 Material de Apoio
-
-Os cursos realizados na etapa anterior **devem ser utilizados como referência**.
-
-- 📘 **Fundamentos de Inteligência Artificial para Sistemas Embarcados**
-- 👁️ **Sistemas de Visão Computacional Embarcada**
-- ⚙️ **Otimização de Modelos em Sistemas Embarcados**
-
-(*Os exemplos apresentados nesses cursos podem ser adaptados e reutilizados neste desafio.*)
-
-
-
-### ⚖️ Critérios de Avaliação
-
-A avaliação considerará:
-
-- **Funcionalidade**  
-  Execução correta dos scripts e geração dos arquivos `.h5` e `.tflite`
-
-- **Edge AI**  
-  Conversão correta para `.tflite` e aplicação de técnica de otimização
-
-- **Documentação**  
-  Preenchimento adequado do relatório (README.md)
+* **O Processo:** Os pesos do modelo foram convertidos de ponto flutuante (32 bits) para inteiros (8 bits).
+* **Vantagem:** Redução drástica no armazenamento e aceleração da inferência, ideal para microcontroladores ou sistemas embarcados que operam apenas com CPU.
 
 ---
 
-## 📤 Passo 3: Instruções de Entrega
+## 📊 Resultados Obtidos
 
-### ✔️ Validação 
+Os resultados superaram as expectativas de engenharia, mantendo alta precisão em um arquivo extremamente leve.
 
-Antes do envio, execute os scripts e confirme a geração dos arquivos:
-- `model.h5`
-- `model.tflite`
-
-
-
-### ⬆️ Envio do Código
-
-```bash
-git add .
-git commit -m "Entrega do desafio técnico - Seu Nome"
-git push origin main
-```
-
-
-
-### 🔍 Verificação Automática
-
-1. Acesse a aba **Actions** no GitHub  
-2. Verifique se o workflow foi executado com sucesso (✅)  
-3. Em caso de erro (❌), consulte os logs, corrija e envie novamente
-
-<img width="807" height="363" alt="image" src="https://github.com/user-attachments/assets/d991d35b-2bc2-48f7-9ac7-cf5ca9dc452a" />
-
-
-
-### 📎 Submissão Final
-
-Copie o link do seu repositório e envie conforme orientações do processo seletivo no Moodle.
+| Métrica | Resultado |
+| :--- | :--- |
+| **Acurácia Final (Teste)** | **98,55%** |
+| **Épocas de Treinamento** | 3 |
+| **Tamanho Original (.h5)** | **400,12 KB** |
+| **Tamanho Otimizado (.tflite)** | **36,79 KB** |
+| **Fator de Redução** | **~10,8x mais leve** |
 
 ---
 
-## 📝 Relatório do Candidato
+## 🧠 Principais Aprendizados
 
-O arquivo (`README.md`) deve ser utilizado como **relatório final do desafio**.
+1.  **Design Eficiente:** A redução de filtros (de 64 para 32/16) e neurônios na camada densa permitiu que o modelo ficasse abaixo do limite de 600KB exigido, sem comprometer a acurácia.
+2.  **Otimização de Bordas:** Aprendi que, para tarefas como o MNIST, a quantização de pesos é extremamente eficaz, pois o modelo não perde a capacidade de identificar formas fundamentais mesmo com menos precisão numérica.
+3.  **Ambientes CI/CD:** O desenvolvimento focado em scripts que executam sem intervenção manual é crucial para pipelines de integração contínua.
 
-Preencha todas as seções de forma clara e objetiva.
+---
 
-> 💡 Dica: não é necessário um relatório extenso.  
-> O mais importante é demonstrar **clareza nas decisões técnicas**.
+## 🚀 Possíveis Melhorias
 
+* **Acurácia:** Implementação de *Data Augmentation* (rotação e deslocamento) para aumentar a robustez contra dígitos escritos de forma inclinada.
+* **Tamanho:** Testar a técnica de **Pruning** (poda de neurônios) para remover conexões com peso zero antes da conversão para TFLite.
+* **Velocidade:** Utilizar *Full Integer Quantization* com um dataset representativo para permitir que o modelo rode em hardwares que não possuem unidade de ponto flutuante (FPU).
 
-
-**Exemplo:**
-
-👤 Identificação: **Nome Completo:**
-
-
-### 1️⃣ Resumo da Arquitetura do Modelo
-
-Descreva, em palavras, a arquitetura da **CNN** implementada no arquivo
-`train_model.py`.
-
-
-
-### 2️⃣ Bibliotecas Utilizadas
-
-Liste as principais bibliotecas utilizadas no projeto, preferencialmente
-com suas versões.
-
-
-
-### 3️⃣ Técnica de Otimização do Modelo
-
-Explique qual técnica foi utilizada para otimizar o modelo no arquivo
-`optimize_model.py`.
-
-
-
-### 4️⃣ Resultados Obtidos
-
-Informe o principal resultado obtido após o treinamento do modelo.
-
-
-
-### 5️⃣ Comentários Adicionais (Opcional)
-
-Utilize este espaço para comentar:
-- Dificuldades encontradas  
-- Decisões técnicas importantes  
-- Limitações do modelo  
-- Aprendizados durante o desafio
-
-
-## 🆘 Suporte
-
-Em caso de dúvidas:
-
-- Consulte o material dos cursos EAD
-- Leia atentamente este README
-- Analise os logs das GitHub Actions
-- Utilize os canais oficiais para contato com os instrutores
-
-Boa sorte no processo seletivo.
-****
+---
+*Relatório final desenvolvido para o desafio técnico de Visão Computacional e Edge AI para o processo seletivo do PNAAT.*
