@@ -54,7 +54,7 @@ Os resultados superaram as expectativas de engenharia, mantendo alta precisão e
 
 ## 🧠 Principais Aprendizados
 
-1.  **Design Eficiente:** A redução de filtros (de 64 para 32/16) e neurônios na camada densa permitiu que o modelo ficasse abaixo do limite de 600KB exigido, sem comprometer a acurácia.
+1.  **Design Eficiente:** A redução de filtros (de 64 para 32/16) e neurônios na camada densa permitiu que o modelo ficasse nas normas padrão de limite de tamanho, sem comprometer a acurácia.
 2.  **Otimização de Bordas:** Aprendi que, para tarefas como o MNIST, a quantização de pesos é extremamente eficaz, pois o modelo não perde a capacidade de identificar formas fundamentais mesmo com menos precisão numérica.
 3.  **Ambientes CI/CD:** O desenvolvimento focado em scripts que executam sem intervenção manual é crucial para pipelines de integração contínua.
 
